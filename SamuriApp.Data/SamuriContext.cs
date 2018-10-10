@@ -14,6 +14,8 @@ namespace SamuriApp.Data
             modelBuilder.Entity<SamuriBattle>()
                 .HasKey(k => new {k.BattleId, k.SamuriId});
 
+            //modelBuilder.Entity<Samuri>().Property(p => p.SecretIdentity).IsRequired();
+
             base.OnModelCreating(modelBuilder);
         }
 

@@ -14,5 +14,6 @@ namespace SamuriApp.Domain
         public List<Quote> Quotes { get; set; }
         //public int BattleId { get; set; }
         public List<SamuriBattle> SamuriBattles { get; set; }
+        public SecretIdentity SecretIdentity { get; set; }
     }
 }
