@@ -9,6 +9,7 @@ namespace SamuriApp.Domain
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDated { get; set; }
-        public List<Samuri> Samuris { get; set; }
+        //public List<Samuri> Samuris { get; set; }
+        public List<SamuriBattle> SamuriBattles { get; set; }
     }
 }

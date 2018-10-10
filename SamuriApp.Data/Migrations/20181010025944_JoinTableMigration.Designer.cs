@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SamuriApp.Data;
 
 namespace SamuriApp.Data.Migrations
 {
     [DbContext(typeof(SamuriDbContext))]
-    partial class SamuriDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181010025944_JoinTableMigration")]
+    partial class JoinTableMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
