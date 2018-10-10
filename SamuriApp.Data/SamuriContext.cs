@@ -8,5 +8,13 @@ namespace SamuriApp.Data
         public DbSet<Samuri> Samuris { get; set; }
         public DbSet<Battle> Battles { get; set; }
         public DbSet<Quote> Quotes { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            const string connectionString = "Server=localhost; Database=SamuriDB; Trusted_Connection=true;";
+            optionsBuilder.UseSqlServer(connectionString);
+
+            //base.OnConfiguring(optionsBuilder);
+        }
     }
 }

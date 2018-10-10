@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SamuriApp.Data\SamuriApp.Data.csproj" />
+    <ProjectReference Include="..\SamuriApp.Domain\SamuriApp.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
