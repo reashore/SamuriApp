@@ -22,7 +22,8 @@ namespace SamuriApp.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             const string connectionString = "Server=localhost; Database=SamuriDB; Trusted_Connection=true;";
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(connectionString, options => options.MaxBatchSize(10));
+            optionsBuilder.EnableSensitiveDataLogging();
 
             //base.OnConfiguring(optionsBuilder);
         }
