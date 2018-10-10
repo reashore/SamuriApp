@@ -18,8 +18,8 @@ namespace SamuriApp.ConsoleUi
             //QuerySamuris();
             //RetrieveAndUpdateSamuri();
             //RetrieveAndUpdateMultipleSamuri();
-            //QueryViaRawSql();
-            UpdateViaSqlCommand();
+            QueryUsingRawSql();
+            UpdateUsingSqlCommand();
             
             Console.WriteLine("Done");
             Console.ReadKey();
@@ -106,7 +106,7 @@ namespace SamuriApp.ConsoleUi
             }
         }
 
-        private static void QueryViaRawSql()
+        private static void QueryUsingRawSql()
         {
             using (SamuriDbContext context = new SamuriDbContext())
             {
@@ -127,7 +127,7 @@ namespace SamuriApp.ConsoleUi
             }
         }
 
-        private static void UpdateViaSqlCommand()
+        private static void UpdateUsingSqlCommand()
         {
             using (SamuriDbContext context = new SamuriDbContext())
             {

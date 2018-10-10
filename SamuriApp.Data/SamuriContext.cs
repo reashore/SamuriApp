@@ -8,6 +8,7 @@ namespace SamuriApp.Data
         public DbSet<Samuri> Samuris { get; set; }
         public DbSet<Battle> Battles { get; set; }
         public DbSet<Quote> Quotes { get; set; }
+        public DbSet<SamuriBattle> SamuriBattles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
