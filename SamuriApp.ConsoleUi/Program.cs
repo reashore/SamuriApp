@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.Extensions.Logging;
 using SamuriApp.Data;
 using SamuriApp.Domain;
 
@@ -13,13 +11,13 @@ namespace SamuriApp.ConsoleUi
     {
         public static void Main()
         {
-            //InsertSamuris();
+            InsertSamuris();
             //InsertMultipleSamuris();
             //QuerySamuris();
             //RetrieveAndUpdateSamuri();
             //RetrieveAndUpdateMultipleSamuri();
-            QueryUsingRawSql();
-            UpdateUsingSqlCommand();
+            //QueryUsingRawSql();
+            //UpdateUsingSqlCommand();
             
             Console.WriteLine("Done");
             Console.ReadKey();
@@ -31,8 +29,6 @@ namespace SamuriApp.ConsoleUi
 
             using (SamuriDbContext context = new SamuriDbContext())
             {
-                MyLoggerProvider myLoggerProvider = new MyLoggerProvider();
-                context.GetService<ILoggerFactory>().AddProvider(myLoggerProvider);
                 context.Samuris.Add(samuri);
                 context.SaveChanges();
             }
@@ -46,9 +42,6 @@ namespace SamuriApp.ConsoleUi
 
             using (SamuriDbContext context = new SamuriDbContext())
             {
-                MyLoggerProvider myLoggerProvider = new MyLoggerProvider();
-                context.GetService<ILoggerFactory>().AddProvider(myLoggerProvider);
-
                 context.Samuris.AddRange(samuriList);
                 context.SaveChanges();
             }
@@ -58,9 +51,6 @@ namespace SamuriApp.ConsoleUi
         {
             using (SamuriDbContext context = new SamuriDbContext())
             {
-                MyLoggerProvider myLoggerProvider = new MyLoggerProvider();
-                context.GetService<ILoggerFactory>().AddProvider(myLoggerProvider);
-
                 List<Samuri> samuris = context.Samuris.Where(s => s.Name.StartsWith("P")).ToList();
 
                 foreach (var samuri in samuris)
@@ -74,9 +64,6 @@ namespace SamuriApp.ConsoleUi
         {
             using (SamuriDbContext context = new SamuriDbContext())
             {
-                MyLoggerProvider myLoggerProvider = new MyLoggerProvider();
-                context.GetService<ILoggerFactory>().AddProvider(myLoggerProvider);
-
                 Samuri samuri = context.Samuris.FirstOrDefault();
 
                 if (samuri == null)
@@ -93,9 +80,6 @@ namespace SamuriApp.ConsoleUi
         {
             using (SamuriDbContext context = new SamuriDbContext())
             {
-                MyLoggerProvider myLoggerProvider = new MyLoggerProvider();
-                context.GetService<ILoggerFactory>().AddProvider(myLoggerProvider);
-
                 List<Samuri> samuris = context.Samuris.ToList();
 
                 if (samuris.Count > 0)
@@ -110,10 +94,7 @@ namespace SamuriApp.ConsoleUi
         {
             using (SamuriDbContext context = new SamuriDbContext())
             {
-                MyLoggerProvider myLoggerProvider = new MyLoggerProvider();
-                context.GetService<ILoggerFactory>().AddProvider(myLoggerProvider);
-
-                var samuris = context.Samuris.FromSql("Select * from Samuris").ToList();
+                List<Samuri> samuris = context.Samuris.FromSql("Select * from Samuris").ToList();
 
                 if (samuris.Count <= 0)
                 {
@@ -131,9 +112,6 @@ namespace SamuriApp.ConsoleUi
         {
             using (SamuriDbContext context = new SamuriDbContext())
             {
-                MyLoggerProvider myLoggerProvider = new MyLoggerProvider();
-                context.GetService<ILoggerFactory>().AddProvider(myLoggerProvider);
-
                 int count = context.Database.ExecuteSqlCommand("Update Samuris set Name=REPLACE(Name, 'San', 'Nan')");
                 Console.WriteLine($"count = {count}");
             }
